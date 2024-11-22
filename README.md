@@ -1,7 +1,7 @@
 # Svelte Blog
 #### Morgan English
 
-### A Place to Share Ideas and Promote Myself
+### A Place to Share Ideas and Promote Myself and Learn
 
 
 ### Attributions:
