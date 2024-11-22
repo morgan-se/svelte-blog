@@ -5,4 +5,4 @@ export async function load({ url }) {
 }
 
 // create pre render to html in build
-// export const prerender = true
+export const prerender = true
