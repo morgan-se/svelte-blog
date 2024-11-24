@@ -1,7 +1,21 @@
 <script lang="ts">
-	import { formatDate } from '$lib/utils'
+	import { formatDate } from '$lib/utils';
+	import { onMount } from 'svelte';
 
-	let { data } = $props()
+	let estimatedReadTime: number = $state(0);
+
+	onMount(() => {
+		const proseElement = document.querySelector('.prose') as HTMLElement;
+		if (proseElement) {
+			// Aggregate text content from all child elements
+			const textContent = proseElement.textContent || '';
+			const wordCount = textContent.split(/\s+/).filter((word) => word.length > 0).length; // Ignore empty strings
+			estimatedReadTime = Math.ceil(wordCount / 200); // 200 words per minute
+			console.log(estimatedReadTime);
+		}
+	});
+
+	let { data } = $props();
 </script>
 
 <svelte:head>
@@ -14,11 +28,12 @@
 	<hgroup>
 		<h1>{data.meta.title}</h1>
 		<p>Published at {formatDate(data.meta.date)}</p>
+		<p>Estimated read time: {estimatedReadTime} min</p>
 	</hgroup>
 
 	<div class="tags">
 		{#each data.meta.categories as category}
-			<span class="surface-4">&num;<a href='/category/{category}'>{category}</a></span>
+			<span class="surface-4">&num;<a href="/category/{category}">{category}</a></span>
 		{/each}
 	</div>
 
@@ -29,10 +44,13 @@
 
 <style>
 	article {
-		max-inline-size: var(--size-content-3);
+		max-inline-size: var(--size-lg);
+		/* max-inline-size: var(--size-content-3); */
 		margin-inline: auto;
 
 		h1 {
+			max-inline-size: var(--size-lg);
+
 			text-transform: capitalize;
 		}
 

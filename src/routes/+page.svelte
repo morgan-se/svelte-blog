@@ -27,7 +27,8 @@
 		gap: var(--size-7);
 
 		.post {
-			max-inline-size: var(--size-content-3);
+			/* max-inline-size: var(--size-content-3); */
+			max-inline-size: var(--size-lg);
 
 			&:not(:last-child) {
 				border-bottom: 1px solid var(--border);

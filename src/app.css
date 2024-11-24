@@ -6,6 +6,8 @@ a {
 }
 
 html {
+
+	/* --size-content-3: 60ch */
 	/* font */
 	--font-system-ui: 'Atkinson Hyperlegible', sans-serif;
 	--font-monospace-code: 'JetBrains Mono', monospace;
@@ -142,9 +144,13 @@ li {
 
 .prose {
 	p {
+		max-inline-size: 100%;
+
 		:not(:is(h2, h3, h4, h5, h6) + p) {
 			margin-top: var(--size-7);
 		}
+
+		margin-bottom: var(--size-2);
 
 		/* ignore paragraph tag around images */
 		&:has(img) {
@@ -153,6 +159,7 @@ li {
 	}
 
 	:is(h2, h3, h4, h5, h6) {
+		max-inline-size: 100%;
 		margin-top: var(--size-8);
 		margin-bottom: var(--size-3);
 	}
@@ -168,9 +175,11 @@ li {
 	}
 
 	pre {
-		max-inline-size: 100%;
+		/* max-inline-size: 100%; */
 		padding: var(--size-3);
+		padding-right: var(--size-10);
 		border-radius: 8px;
 		tab-size: 2;
+		margin-bottom: var(--size-3);
 	}
 }
