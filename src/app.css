@@ -164,12 +164,19 @@ li {
 		margin-bottom: var(--size-3);
 	}
 
-	:is(ul, ol) {
-		list-style-type: '🔥';
+	:is(ol) {
+		list-style-type: decimal; 
+   		list-style-position: outside; 
+		padding-left: var(--size-5);
+	}
+	
+	:is(ul) {
+		list-style-type: '👉';
 		padding-left: var(--size-5);
 	}
 
 	:is(ul, ol) li {
+		max-inline-size: 90%;
 		margin-block: var(--size-2);
 		padding-inline-start: var(--size-2);
 	}
