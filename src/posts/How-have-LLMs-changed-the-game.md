@@ -7,7 +7,7 @@ categories:
   - ChatGPT
   - Education
   - Opinion
-published: false
+published: true
 ---
 
 ## What is an LLM
@@ -37,7 +37,7 @@ Writing the code to solve such a puzzle is often done in first year coding cours
 ### How can ChatGPT 'help'
 We can ask ChatGPT something as basic as
 
-> ``Write me a Tower of Hanoi solver in python''
+> Write me a Tower of Hanoi solver in python
 
 And it will give back working python code that solves the puzzle seen below.
 
@@ -84,3 +84,19 @@ As I eluded to before, I think LLMs are useful in certain professional contexts.
 - Non-critical dummy data. If all you need is a whole bunch of different dummy data ChatGPT is an easy choice, working well with csv files and SQL.
 
 Though worry not learners, you can interact with LLMs in a way that promotes learning instead of getting it to do the work for you. With the proper prompting ChatGPT can become an excellent tutor to help learn programming contexts.
+
+It could be as simple as saying
+> Can you teach me step by step how to write a Tower of Hanoi solver in python? Don't give me any code let me work that out
+
+And ChatGPT will give a thorough break down of the steps you should go through to write the code yourself (YMMV since ChatGPT is ever-evolving and not deterministic). In my case I received a detailed breakdown of the following points:
+1. Understand the Problem — Learn the basic rules and objectives.
+1. Break Down the Problem — Identify the steps needed for solving the puzzle for any number of disks.
+1. Define the Function — Set up the recursive function with parameters for the number of disks and the pegs.
+1. Base Case — Define what happens when there's only one disk to move.
+1. Recursive Case — Think about how to break the problem into smaller sub-problems.
+1. Track Moves — Ensure you log or output the moves as you go.
+1. Test the Function — Start with small numbers of disks and verify correctness.
+1. Optimize (Optional) — Consider any additional improvements once the basic function is working.
+
+But the true beauty lies in the fact you can converse with it and it will maintain the context. You can share code snippets as you work to get feedback about why things aren't working, or ways you could better write something.
+ 
