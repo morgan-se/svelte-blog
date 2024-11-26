@@ -5,7 +5,7 @@ date: '2024-11-21'
 categories:
   - example
   - intro
-published: true
+published: false
 ---
 
 
@@ -21,12 +21,6 @@ function greet(name: string) {
     console.log(`hey ${name}!`);
 }
 ```
-
-
-<script>
-  import Counter from './counter.svelte'
-</script>
-
 
 ## Svelte
 
