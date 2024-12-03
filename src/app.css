@@ -175,6 +175,12 @@ li {
 		padding-left: var(--size-5);
 	}
 
+	/* Styling for nested ul inside an li */
+	li > ul {
+		list-style-type: '⭐'; /* Different bullet for second-level ul */
+		padding-left: var(--size-5);
+	}
+
 	:is(ul, ol) li {
 		max-inline-size: 90%;
 		margin-block: var(--size-2);
