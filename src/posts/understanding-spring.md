@@ -185,7 +185,9 @@ Above we introduced the `@Component` annotation to be used on classes, in our ca
 
 ```java
 public class ComponentScanner {
-    public static List<Class<?>> scanForAnnotatedClasses(String packageName, List<Class<? extends Annotation>> annotations) throws IOException, ClassNotFoundException {
+    public static List<Class<?>> scanForAnnotatedClasses(String packageName,
+                                    List<Class<? extends Annotation>> annotations) 
+                                        throws IOException, ClassNotFoundException {
         List<Class<?>> annotatedClasses = new ArrayList<>();
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         String path = packageName.replace('.', '/');
@@ -225,7 +227,8 @@ public class ClassFinder {
         return classes;
     }
 
-    private static void findClassesInDirectory(File directory, String packagePath, List<Class<?>> classes) throws ClassNotFoundException {
+    private static void findClassesInDirectory(File directory, String packagePath,
+                                                List<Class<?>> classes) throws ClassNotFoundException {
         if (!directory.exists()) {
             return;
         }
@@ -287,7 +290,8 @@ public class SimpleServe {
                 for (Method method : methods) {
                     if (method.isAnnotationPresent(RequestMapping.class)) {
                         RequestMapping mapping = method.getAnnotation(RequestMapping.class);
-                        if (mapping.method().equals(request.getMethod()) && mapping.path().equals(request.getPath())) {
+                        if (mapping.method().equals(request.getMethod()) &&
+                                mapping.path().equals(request.getPath())) {
                             return (HttpResponse) method.invoke(DIContainer.getInstances().get(clazz), request);
                         }
                     }
@@ -560,7 +564,8 @@ public HttpResponse handleRequest(HttpRequest request) {
             for (Method method : methods) {
                 if (method.isAnnotationPresent(RequestMapping.class)) {
                     RequestMapping mapping = method.getAnnotation(RequestMapping.class);
-                    if (mapping.method().equals(request.getMethod()) && mapping.path().equals(request.getPath())) {
+                    if (mapping.method().equals(request.getMethod()) &&
+                            mapping.path().equals(request.getPath())) {
                         return (HttpResponse) method.invoke(clazz, request);
                     }
                 }
@@ -633,5 +638,5 @@ And a `GET` request to a url that has no mapped response gives
 ![Example GET request](../simple-serve-get-notfound.png)
 
 ## Wrapping up
-Hopefully breaking down web frameworks to there smallest parts has given you a better understanding of how Spring and other web frameworks actually work under the hood. For those interested the code can be found at [https://gitlab.com/morgan.english.seng/simple-serve/](https://gitlab.com/morgan.english.seng/simple-serve/), do have a play around trying to create more controllers and services or implementing a more complete HTTP service.
+Hopefully breaking down web frameworks to their smallest parts has given you a better understanding of how Spring and other web frameworks actually work under the hood. For those interested the code can be found at [https://gitlab.com/morgan.english.seng/simple-serve/](https://gitlab.com/morgan.english.seng/simple-serve/), do have a play around trying to create more controllers and services or implementing a more complete HTTP service.
 
