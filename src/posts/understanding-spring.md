@@ -12,16 +12,16 @@ published: true
 
 The software engineering field is dominated by libraries and frameworks which solve the repeated problems we face as developers. Something many of us will run into are the numerous different web frameworks, each could likely have its own book written about how it all works and the design decisions made, not to mention all the content about how to use it.
 
-I help teach SENG302, a whole year team-based project course at the University of Canterbury. Within which we use Spring (and Thymeleaf, though we wont open that box today) as our web framework of choice. In my free time I decided to dig a little deeper and get a better understanding of how it actually works.
+I help teach a whole year team-based project course in the third year of the Software Engineering degree at UC, within which we've recently taken to using Spring (and Thymeleaf, though we wont open that can of worms today) as our web framework of choice. One of my many responsibilities within the course is acting as a CTO and providing technical help and guidance to the students, so I decided to dig a little deeper and get a better understanding of how it actually works to further my own knowledge and what I can pass on.
 
 ## Whats the motivation?
-You may wonder why anyone would be insane enough to want to dig deeper and get a better understanding of Spring in their free time. To some extent I would agree with you, but sometimes doing little 'side-quests' like this is just whats needed as a break from regular teaching.
+You may wonder why anyone would be insane enough to want to dig deeper and get a better understanding of Spring in their free time. To some extent I would agree with you, but sometimes doing little 'side-quests' like this is just whats needed as a break from regular teaching or development.
 
-Importantly to mention, its also something many new developers struggle with. There is the common understanding that we can simply build on top of these libraries and frameworks without having to worry how they work, which may be the case most of the time but if no one on your team champions the knowledge its all too common to make subpar decisions or get stumped when something doesn't work the way you expect.
+Importantly to mention, its also something I find many new developers struggle with. There is the common understanding that we can simply build on top of these libraries and frameworks without having to worry how they work, which may be the case most of the time but if no one on your team champions the knowledge its all too common to make subpar decisions or get stumped when something doesn't work the way you expect.
 
-Though I'm not suggesting you need to understand how every part of a framework works to develop with it, instead its important to understand the concepts at play that you directly interact with. For example many students can go the whole project without ever properly understanding Dependency Injection, Annotations, or Generics and Reflection.
+Though I'm not suggesting you need to understand how every part of a framework works to develop with it, instead its important to understand the concepts at play that you directly interact with. For example many students can go the whole project without ever properly understanding concepts like [Dependency Injection](#dependency-injection), [Annotations](#annotations), or [Reflection](#reflection).
 
-So lets have a quick look at them before we try to understand how Spring applies these principles
+Speaking of lets have a quick look at those concepts in more detail before we try to understand how Spring applies them.
 
 ## The fundamentals
 ### Dependency Injection
@@ -94,7 +94,7 @@ public class MyFirstTest {
 }
 ```
 
-And then when we run JUnit, it just knows exactly which methods are tests, and which aren't (like our `helper` function above). We'll discuss briefly how it does that when looking at Reflection.
+And then when we run JUnit, it knows exactly which methods are tests, and which aren't (like our `helper` function above). We'll discuss briefly how it does that when looking at Reflection.
 
 However one important part about Java Annotations that I want to highlight is they are simply defined in Java code. They are something you yourself can write and use in your code, not just something built into frameworks.
 
@@ -121,7 +121,7 @@ We can see the `@Test` annotation is defined with `public @interface Test`, whic
 
 
 ### Reflection
-Reflection is a debated topic in Java, often used to break the pre-defined contracts and principles laid out in code which can lead to hacky flaky solutions (though sometimes this can be the only way to achieve something, a common use case when needing to access and interact with code external to your own project). However reflection is often used with annotations, providing a more reliable structure and contract to follow.
+Reflection is a debated topic in Java, often used to break the pre-defined contracts and principles laid out in code which can lead to hacky or flaky solutions. Though sometimes this can be the only way to achieve something, a common use case for example is needing to access and interact with code external to your own project, even if it is not ideal. However reflection is often used with annotations, providing a more reliable structure and contract to follow.
 
 So what is reflection? Lets start with a quick thought experiment, say we have the class
 
@@ -146,20 +146,21 @@ Importantly in the above code we use reflection to:
 - Ln 3: Make the method accessible (so we can subsequently call it)
 - Ln 4: Invoke the method and get its output
 
-Though reflection is much more powerful than just this example which we'll see in practice soon.
+Of course in the vast majority of cases you should only be reflectively accessing classes and methods you know are 'safe' to do so, such as those with annotations that provide the metadata required to create a more reasonable contract. Reflection is much more powerful than just this example we'll see a bit more in practice soon but there is much farther you can go with it.
 
 
 ## Putting it all together to create a Spring Clone
+Now that we'e covered the important concepts lets look at creating our own Spring clone called `SimpleServe`. The rest of this article will go over much of the code needed however for brevity not all aspects will be discussed so those interested are welcome to refer to the repository linked at the end of the article to see the complete implementation with some more documentation.
 
 ### Custom annotations
-Those with experience in Swing will be familiar with its custom annotations, the ones we'll use for our spring clone are `@Component`, `@Autowired` and `@RequestMapping`.
+Those with experience in Spring will be familiar with its custom annotations, the ones we'll use for our spring clone are `@Component`, `@Autowired` and `@RequestMapping`.
 
 ```java
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Component {}
 ```
-The Component annotation is simply used to define what classes (since our `@Target` is `TYPE`) are considered 'components' of the app, in our case only for controllers and service classes which we have combined for simplicity. We then use this meta-data to know what classes can be instantiated at runtime.
+The Component annotation is simply used to define what classes (since our `@Target` is `TYPE`) are considered 'components' of the app, in our case this is only controllers and service classes.  We have combined these for simplicity but in a more mature framework a clear distinction between classes of different types is often important. We use this meta-data to know what classes can be instantiated at runtime.
 
 ```java
 @Retention(RetentionPolicy.RUNTIME)
@@ -167,7 +168,7 @@ The Component annotation is simply used to define what classes (since our `@Targ
 public @interface Autowired {}
 ```
 <!-- Could make a short post about constructor dependency injection vs field injection to link below.  -->
-The Autowired annotation is a very common annotation in Spring (though our version only works on constructors, since constructor dependency injection is superior to field injection), that mark a constructor for dependency injected
+The Autowired annotation is a very common annotation in Spring that mark a constructor or field (though our version only works on constructors, since constructor dependency injection is [superior to field injection](constructor-vs-field-injection)) for dependency injection.
 
 ```java
 @Retention(RetentionPolicy.RUNTIME)
@@ -178,10 +179,18 @@ public @interface RequestMapping {
 }
 ```
 
-Finally the RequestMapping annotation is used on a method to tell our framework that the method can handle HTTP requests. We even see here that the annotation interface has two functions.
+Finally the RequestMapping annotation is used on a method to tell our framework that the method can handle HTTP requests. In this case our annotation interface also defines two functions, these become values that we need to set when using the annotation.
+
+For example:
+```java
+@RequestMapping(method = HttpMethod.GET, path = "/")
+```
+We'll see this in action soon but its important to highlight how we can set values when adding annotations to our code to further define their contract:
+- The `method` supplied defines the HTTP request method the annotated function can accept
+- the `path` supplied defines the matching URL path of the request that the annotated function can accept
 
 ### Finding annotated classes
-Above we introduced the `@Component` annotation to be used on classes, in our case we use this so we can find those classes at runtime. The example code below shows a generic implementation that finds all classes with any of the given `annotations`. 
+Above we introduced the `@Component` annotation to be used on classes, in our case we use this so we can find those classes at runtime. The example code below shows a generic implementation that finds all classes with any of the given `annotations`, though we'll only look for `@Component`. 
 
 ```java
 public class ComponentScanner {
@@ -209,7 +218,7 @@ public class ComponentScanner {
 }
 ```
 
-Importantly above we get all the classes with `ClassFinder.find()` and then check if they have any of the relevant annotations with `c.isAnnotationPresent()`. The `ClassFinder` class is copied below as well.
+Importantly above we get all the classes in our app with `ClassFinder.find()` and then check if they have any of the relevant annotations with `c.isAnnotationPresent()`. The `ClassFinder` class is copied below as well.
 
 ```java
 public class ClassFinder {
@@ -253,8 +262,9 @@ public class ClassFinder {
 ```
 
 
-### The bread and butter of our framework and Dependency Injection
-All of this is then called from our `SimpleServe` class, which implements the Singleton pattern and gets all classes from the root package or below that have the `@Component` annotation and calls out to the `DIContainer` class to initialize all the classes (handling the dependency injection). Using the Singleton pattern allows for easy access to our `handleRequest` method that we'll see more of later.
+### The bread and butter of our framework (and dependency injection)
+All of this is then called from our `SimpleServe` class, which implements the Singleton pattern and gets all classes from the root package or below that have the `@Component` annotation. It then calls out to the `DIContainer` class to initialize all the classes using their `@Autowired` constructors for dependency injection. Using the Singleton pattern allows for easy access to our `handleRequest` method that we'll see more of later.
+
 
 ```java
 public class SimpleServe {
@@ -284,28 +294,12 @@ public class SimpleServe {
     }
 
     public HttpResponse handleRequest(HttpRequest request) {
-        try {
-            for (Class<?> clazz : DIContainer.getClasses()) {
-                Method[] methods = clazz.getMethods();
-                for (Method method : methods) {
-                    if (method.isAnnotationPresent(RequestMapping.class)) {
-                        RequestMapping mapping = method.getAnnotation(RequestMapping.class);
-                        if (mapping.method().equals(request.getMethod()) &&
-                                mapping.path().equals(request.getPath())) {
-                            return (HttpResponse) method.invoke(DIContainer.getInstances().get(clazz), request);
-                        }
-                    }
-                }
-            }
-            return new HttpResponse(404, "Not found", "");
-        } catch (InvocationTargetException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        // implementation shown and discussed later
     }
 }
 ```
 
-The `DIContainer` class below is quite complex, given a set of classes it will loop through them and try to initialize them using their `@Autowired` constructor. We put this all inside a do..while loop since we want to loop over creation until we go a whole loop without initializing a new class, if this happens we should have initialized all possible classes and means we don't have to worry about dependency order.
+The `DIContainer` class below is quite complex, given a set of classes it will loop through each and try to initialize it using the `@Autowired` annotated constructor. We put this all inside a `do..while` loop since we want to loop over creation until we go a whole loop without initializing a new class, if this happens we should have initialized all possible classes (or something went wrong). This is a somewhat suboptimal solution but means we don't have to worry about defining and following a specific dependency tree for our classes to create them all in order. 
 
 ```java
 public class DIContainer {
@@ -373,7 +367,7 @@ public class DIContainer {
 }
 ```
 
-In the main class of our application we create the `SimpleServe` singleton and start listening to a defined port and assign any request that comes in its own thread from a pool.
+In the main class (`SimpleServer`) of our application we initialize the `SimpleServe` singleton and start listening to a defined port and assign any request that comes in its own thread from a pool, passing each to a new `RequestHandler` instance.
 
 ```java
 public class SimpleServer {
@@ -554,31 +548,34 @@ public class RequestHandler implements Runnable {
 }
 ```
 
-Above we see the aforementioned `SimpleServe.handleRequest()` which gets passed the `httpRequest` object and returns an `HttpResponse` object that we will send back to the client. Let's take a look at that method again.
+Above we see the aforementioned `SimpleServe.handleRequest()` which gets passed an `HttpRequest` object and returns an `HttpResponse` object that we will send back to the client. The implementation is shown below.
 
 ```java
-public HttpResponse handleRequest(HttpRequest request) {
-    try {
-        for (Class<?> clazz : DIContainer.getClasses()) {
-            Method[] methods = clazz.getMethods();
-            for (Method method : methods) {
-                if (method.isAnnotationPresent(RequestMapping.class)) {
-                    RequestMapping mapping = method.getAnnotation(RequestMapping.class);
-                    if (mapping.method().equals(request.getMethod()) &&
-                            mapping.path().equals(request.getPath())) {
-                        return (HttpResponse) method.invoke(clazz, request);
+public class SimpleServe {
+    // other functions and properties omitted, refer to earlier listing
+    public HttpResponse handleRequest(HttpRequest request) {
+        try {
+            for (Class<?> clazz : DIContainer.getClasses()) {
+                Method[] methods = clazz.getMethods();
+                for (Method method : methods) {
+                    if (method.isAnnotationPresent(RequestMapping.class)) {
+                        RequestMapping mapping = method.getAnnotation(RequestMapping.class);
+                        if (mapping.method().equals(request.getMethod()) &&
+                                mapping.path().equals(request.getPath())) {
+                            return (HttpResponse) method.invoke(DIContainer.getInstances().get(clazz), request);
+                        }
                     }
                 }
             }
+            return new HttpResponse(404, "Not found", "Not found");
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
-        return new HttpResponse(404, "Not found", "");
-    } catch (InvocationTargetException | IllegalAccessException e) {
-        throw new RuntimeException(e);
     }
 }
 ```
 
-Above we see that when a request is handled we simply look through all the instantiated classes (which include all our controllers) and check each method therein to see if they are annotated with `@RequestMapping` and have the method and path that match the incoming request. Otherwise simply return a 404 Not Found response.
+Above we see that when a request is handled we simply look through all the instantiated classes (which include all our controllers) and check each method therein to see if they are annotated with `@RequestMapping` and have the `method` and `path` values that match the incoming request. If a matching method is found we explicitly `invoke` it (using reflection) with our request parameter, otherwise return a 404 Not Found response.
 
 ### Sending a response back to the client
 Finally lets take a look at how we send our `HttpResponse` back to the client.
@@ -629,7 +626,7 @@ public class ResponseParser {
 ```
 
 ### Sending a request
-Our 'spring-like' framework is now complete, of course our HTTP implementation leaves much to be desired but its enough to try some simple get requests.
+Our 'spring-like' framework is now complete, of course our HTTP implementation leaves much to be desired but its enough to try some simple get requests. Upon running it on port 8080 we can then send some basic HTTP requests by navigating to the URL in a browser.
 
 A simple `GET` request to `/` will give the following
 ![Example GET request](../simple-serve-get.png)
@@ -638,5 +635,6 @@ And a `GET` request to a url that has no mapped response gives
 ![Example GET request](../simple-serve-get-notfound.png)
 
 ## Wrapping up
-Hopefully breaking down web frameworks to their smallest parts has given you a better understanding of how Spring and other web frameworks actually work under the hood. For those interested the code can be found at [https://gitlab.com/morgan.english.seng/simple-serve/](https://gitlab.com/morgan.english.seng/simple-serve/), do have a play around trying to create more controllers and services or implementing a more complete HTTP service.
+Hopefully breaking down web frameworks to their smallest parts has given you a better understanding of how Spring and other web frameworks actually work under the hood. For those interested the code can be found at [https://gitlab.com/morgan.english.seng/simple-serve](https://gitlab.com/morgan.english.seng/simple-serve), do have a play around trying to create more controllers and services or implementing a more complete HTTP service.
 
+Hopefully this exercise has also highlighted just how great many web frameworks actually are and the reduced cognitive load they offer us developers. Whilst we may have made a basic framework from scratch, the functionality provided from widely adopted libraries like Spring goes far beyond what we discussed here. I have another post that looks at the [relevance of third party libraries and frameworks](./third-party-libraries.md) that may be of interest.
