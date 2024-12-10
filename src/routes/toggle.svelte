@@ -5,15 +5,15 @@
 </script>
 
 <button on:click={theme.toggle} aria-label="Toggle theme">
-	{#if theme.current === 'dark'}
-		<div in:fly={{ y: 10 }}>
-			<Sun />
-			<span>Light</span>
-		</div>
-	{:else}
+	{#if theme.current === 'light'}
 		<div in:fly={{ y: -10 }}>
 			<Moon />
 			<span>Dark</span>
+		</div>
+	{:else}
+		<div in:fly={{ y: 10 }}>
+			<Sun />
+			<span>Light</span>
 		</div>
 	{/if}
 </button>

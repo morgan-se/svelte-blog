@@ -5,7 +5,7 @@ date: '2025-01-01'
 categories:
   - Opinion
   - Libraries & Frameworks
-published: true
+published: false
 ---
 
 ## Reusing code
@@ -42,4 +42,4 @@ Of course not all libraries are made equal, some can instead be a detriment to y
 - Its closed source and knowledge about how it works is kept hidden
 
 ### Why its all important
-Its important to be able to 
+More coming soon...

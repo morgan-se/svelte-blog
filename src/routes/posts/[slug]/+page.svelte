@@ -66,7 +66,8 @@
 		.tags {
 			display: flex;
 			gap: var(--size-3);
-			margin-top: var(--size-7);
+			margin-top: var(--size-5);
+			margin-bottom: var(--size-2);
 
 			> * {
 				padding: var(--size-2) var(--size-3);

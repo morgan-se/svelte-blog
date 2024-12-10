@@ -1,6 +1,6 @@
 ---
-title: How have LLMs changed the game
-description: A reflection on the state of LLMs and their impact software development and education.
+title: How have LLMs changed the game?
+description: A small reflection on the state of LLMs and their impact software development and education.
 date: '2024-11-23'
 categories:
   - LLMs
@@ -65,7 +65,7 @@ tower_of_hanoi(n, 'A', 'B', 'C')
 In this case we are asking about a common problem, meaning there are many (likely thousands) of example solutions in the data that ChatGPT was trained on. So of course we would expect it to do well at the task. Novel problems that require a unique solution can be more tricky, we'll look at such an example later.
 
 ### Is it really helping?
-The use of LLMs especially in education is a hotly debated topic. Whilst there are arguments for both sides there is one point that sticks out especially for me, and that is ``Does it really help?''. A student going to ChatGPT and getting an answer they can copy-paste into their assignment or homework is bad on many fronts. Some may argue, though, that there have always been ways to cheat assignments whether it be copying a classmates work, or finding a solution online. However never has it been so available, practically any problem (at least that students are going to be expected to solve in their first year at university) can be solved in seconds by just asking ChatGPT. Heck why even write the prompt yourself instead you can copy paste the question directly and get an answer. The tailored nature of the solutions it provides lead to reduced understanding required from the end user, something that has disastrous consequences on learning. 
+The use of LLMs especially in education is a hotly debated topic. Whilst there are arguments for both sides there is one point that sticks out especially for me, and that is ``Does it really help?''. A student going to ChatGPT and getting an answer they can copy-paste into their assignment or homework is bad on many fronts. Some may argue, though, that there have always been ways to cheat assignments whether it be copying a classmates work, or finding a solution online. However never has it been so available, practically any problem (at least that students are going to be expected to solve in their first year at university) can be solved in seconds by just asking ChatGPT. Heck, why even write the prompt yourself when you can just copy paste the question directly instead and still get the right answer? The tailored nature of the solutions it provides lead to reduced understanding required from the end user, something that has disastrous consequences on learning. 
 
 
 ### Is it just education?
@@ -80,7 +80,7 @@ There are other issues with using LLMs in a professional context, some jobs have
 ## How should we use an LLM
 As I eluded to before, I think LLMs are useful in certain professional contexts. Those are:
 - Picking up a new language (or remembering syntax you haven't used in a while). In this case you are not missing out on the learning aspect as the underlying fundamentals are there. Instead its like going to a to look up a translation in a dictionary.
-- Basic one time use scripts. If all you need is something like a simple python script to read some data and change its format then we can largely ignore the issues that come with code smells or not having all the context. Though you still need to understand the code to validate it actually does what you are wanting
+- Basic one time use scripts. If all you need is something like a simple python script to read some data and change its format then we can largely ignore the issues that come with code smells or not having all the context. Though you still need to understand the code to validate it actually does what you are wanting.
 - Non-critical dummy data. If all you need is a whole bunch of different dummy data ChatGPT is an easy choice, working well with csv files and SQL.
 
 Though worry not learners, you can interact with LLMs in a way that promotes learning instead of getting it to do the work for you. With the proper prompting ChatGPT can become an excellent tutor to help learn programming contexts.

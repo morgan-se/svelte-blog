@@ -49,7 +49,7 @@
 
 	<h2 class="intro">Or see my résumé? 📄</h2>
 
-	<p>Coming soon... Looks like you'll have to wait</p>
+	<a href="/resume_public.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
 </div>
 </section>
 
