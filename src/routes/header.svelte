@@ -10,7 +10,7 @@
 
     <ul class="links">
         <li>
-            <a href="/">Posts</a>
+            <a href="/posts">Posts</a>
         </li>
         <li>
             <a href="/about">About</a>

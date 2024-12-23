@@ -8,6 +8,7 @@ categories:
   - Education
   - Opinion
 published: true
+priority: 1
 ---
 
 ## What is an LLM

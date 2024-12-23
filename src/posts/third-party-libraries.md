@@ -6,6 +6,7 @@ categories:
   - Opinion
   - Libraries & Frameworks
 published: true
+priority: 2
 ---
 
 ## Reusing code

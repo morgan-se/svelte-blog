@@ -1,12 +1,13 @@
 ---
 title: Constructor vs Field Injection
-description: A short reflection on the difference between constructor and dependency injection
+description: A short reflection on the difference between constructor and dependency injection.
 date: '2024-12-21'
 categories:
   - Java
   - Dependency Injection
   - Spring
 published: true
+priority: 2
 ---
 
 ## Dependency injection refresher

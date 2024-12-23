@@ -6,6 +6,7 @@ categories:
   - LLMs
   - Raspberry Pi
 published: false
+priority: 3
 ---
 
 ## LLMs at home

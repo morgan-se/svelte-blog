@@ -10,7 +10,6 @@
 </svelte:head>
 
 <section>
-	<h1 class="feature-head">Featured Posts:</h1>
 	<ul class="posts">
 		{#each data.posts as post}
 			<li class="post">
@@ -23,10 +22,6 @@
 </section>
 
 <style>
-	.feature-head {
-		margin-bottom: var(--size-3);
-	}
-
 	.posts {
 		display: grid;
 		gap: var(--size-7);

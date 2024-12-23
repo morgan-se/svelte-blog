@@ -1,6 +1,6 @@
 ---
 title: Understanding Spring
-description: A dive into some of the finer details how Spring operates
+description: A hands-on dive into some of the finer details how Spring and other rest frameworks operate
 date: '2024-12-03'
 categories:
   - Java
@@ -8,6 +8,7 @@ categories:
   - Technical
   - Dependency Injection
 published: true
+priority: 1
 ---
 
 The software engineering field is dominated by libraries and frameworks which solve the repeated problems we face as developers. Something many of us will run into are the numerous different web frameworks, each could likely have its own book written about how it all works and the design decisions made, not to mention all the content about how to use it.

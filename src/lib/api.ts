@@ -1,6 +1,6 @@
 import type { Post } from '$lib/types'
 
-export async function getPosts(category?: string): Promise<Post[]> {
+export async function getPosts(category?: string, featured?: boolean): Promise<Post[]> {
     let posts: Post[] = []
 
     const paths = import.meta.glob('/src/posts/*.md', { eager: true })
@@ -17,14 +17,30 @@ export async function getPosts(category?: string): Promise<Post[]> {
                 if (category && !post.categories.includes(category)) {
                     continue
                 }
+                // Ignore posts that are only priority 3
+                if (featured && post.priority >= 3) {
+                    continue
+                }
                 posts.push(post)
             }
         }
     }
 
-    posts = posts.sort((first, second) =>
-        new Date(second.date).getTime() - new Date(first.date).getTime()
-    )
+    posts = posts.sort((first, second) => {
+        if (featured) {
+            if (first.priority == second.priority) {
+                return new Date(second.date).getTime() - new Date(first.date).getTime()
+            } else {
+                if (first.priority > second.priority) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        } else {
+        return new Date(second.date).getTime() - new Date(first.date).getTime()
+        }
+    })
 
     // console.log(`posts: ${posts}`)
 
