@@ -13,7 +13,7 @@ priority: 2
 ## Dependency injection refresher
 Dependency injection is a design pattern often implemented in Java and other object-oriented languages. The purpose of the pattern is to abstract the functionality relating to managing/creating dependencies out of the object itself. This is important to reduce coupling between classes, promote reusable code and more.
 
-In the following examples we'll be looking at examples similar to Spring dependency injection, for a little more information about how this works you can refer to the [Understanding Spring](./understanding-spring.md) post.
+In the following examples we'll be looking at examples similar to Spring dependency injection, for a little more information about how this works you can refer to the [Understanding Spring](./understanding-spring) post.
 
 
 ## Field injection
