@@ -1,9 +1,8 @@
 import type { Post } from '$lib/types'
 import { getPosts } from '$lib/api'
 
-export async function load({ fetch }) {
-	// const response = await fetch('api/posts')
-	// const posts: Post[] = await response.json()
-    const posts: Post[] = await getPosts(undefined, true);
-	return { posts }
+export async function load() {
+    const posts: Post[] = await getPosts();
+	const featuredPosts: Post[] = await getPosts(undefined, true)
+	return { posts, featuredPosts }
 }
