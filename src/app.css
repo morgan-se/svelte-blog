@@ -158,6 +158,10 @@ li {
 		}
 	}
 
+	:is(img) {
+		margin-bottom: var(--size-4);
+	}
+
 	:is(h2, h3, h4, h5, h6) {
 		max-inline-size: 100%;
 		margin-top: var(--size-8);
