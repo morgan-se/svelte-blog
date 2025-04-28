@@ -45,6 +45,7 @@
 		overflow-x: auto; /* Allows horizontal scrolling for the carousel */
 		gap: var(--size-7); /* Space between featured posts */
 		padding: var(--size-7) 0; /* Top and bottom padding for separation */
+		max-width: var(--size-lg);
 	}
 
 	.featured-post {

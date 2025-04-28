@@ -630,10 +630,10 @@ public class ResponseParser {
 Our 'spring-like' framework is now complete, of course our HTTP implementation leaves much to be desired but its enough to try some simple get requests. Upon running it on port 8080 we can then send some basic HTTP requests by navigating to the URL in a browser.
 
 A simple `GET` request to `/` will give the following
-![Example GET request](../simple-serve-get.png)
+![Example GET request](../posts/simple-serve-get.png)
 
 And a `GET` request to a url that has no mapped response gives
-![Example GET request](../simple-serve-get-notfound.png)
+![Example GET request](../posts/simple-serve-get-notfound.png)
 
 ## Wrapping up
 Hopefully breaking down web frameworks to their smallest parts has given you a better understanding of how Spring and other web frameworks actually work under the hood. For those interested the code can be found at [https://gitlab.com/morgan.english.seng/simple-serve](https://gitlab.com/morgan.english.seng/simple-serve), do have a play around trying to create more controllers and services or implementing a more complete HTTP service.

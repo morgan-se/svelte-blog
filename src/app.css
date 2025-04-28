@@ -221,3 +221,84 @@ li {
 		margin-bottom: var(--size-3);
 	}
 }
+
+/* todo: bad copy paste fr */
+.recipe {
+	p {
+		max-inline-size: 100%;
+
+		:not(:is(h2, h3, h4, h5, h6) + p) {
+			margin-top: var(--size-7);
+		}
+
+		margin-bottom: var(--size-2);
+
+		/* ignore paragraph tag around images */
+		&:has(img) {
+			display: contents;
+		}
+	}
+
+	:is(img) {
+		margin-bottom: var(--size-4);
+	}
+
+	:is(h2, h3, h4, h5, h6) {
+		max-inline-size: 100%;
+		margin-top: var(--size-8);
+		margin-bottom: var(--size-3);
+	}
+
+	:is(ol) {
+		list-style-type: decimal; 
+   		list-style-position: outside; 
+		padding-left: var(--size-5);
+	}
+	
+	:is(ul) {
+		list-style-type: '👉';
+		padding-left: var(--size-5);
+	}
+
+	/* Styling for nested ul inside an li */
+	li > ul {
+		list-style-type: '📸'; /* Different bullet for second-level ul */
+		padding-left: var(--size-5);
+	}
+
+	:is(ul, ol) li {
+		max-inline-size: 90%;
+		margin-block: var(--size-2);
+		padding-inline-start: var(--size-2);
+	}
+
+	:is(blockquote) {
+		display: inline-block; /* Shrink-wrap the blockquote to its content */
+		max-inline-size: 70%;
+		margin-left: 2em; /* Center the blockquote and add spacing */
+		padding-left: 0.5em; /* Space for the quote mark */
+		font-style: italic; /* Italicize the quote for emphasis */
+		border-left: 0px;
+		position: relative; /* To position the ::before pseudo-element */
+	}
+
+	:is(blockquote)::before {
+		content: "“"; /* Decorative quote mark */
+		font-size: 6em; /* Large size for emphasis */
+		color: var(--brand); /* Muted color for the quote mark */
+		position: absolute;
+		top: 0; /* Align to the top of the blockquote */
+		left: -0.5em; /* Adjust to position the quote */
+		line-height: 1; /* Prevent extra spacing */
+	  }
+	
+
+	pre {
+		/* max-inline-size: 100%; */
+		padding: var(--size-3);
+		padding-right: var(--size-10);
+		border-radius: 8px;
+		tab-size: 2;
+		margin-bottom: var(--size-3);
+	}
+}

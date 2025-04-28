@@ -1,12 +1,12 @@
-import type { Post } from '$lib/types'
+import type { Post, Recipe } from '$lib/types'
 
 export async function getPosts(category?: string, featured?: boolean): Promise<Post[]> {
     let posts: Post[] = []
 
-    const paths = import.meta.glob('/src/posts/*.md', { eager: true })
+    const post_paths = import.meta.glob('/src/posts/*.md', { eager: true })
 
-    for (const path in paths) {
-        const file = paths[path]
+    for (const path in post_paths) {
+        const file = post_paths[path]
         const slug = path.split('/').at(-1)?.replace('.md', '')
 
         if (file && typeof file === 'object' && 'metadata' in file && slug) {
@@ -45,4 +45,32 @@ export async function getPosts(category?: string, featured?: boolean): Promise<P
     // console.log(`posts: ${posts}`)
 
     return posts
+}
+
+
+export async function getRecipes(): Promise<Recipe[]> {
+    let recipes: Recipe[] = []
+
+    const recipe_paths = import.meta.glob('/src/recipes/*.md', { eager: true })
+
+    for (const path in recipe_paths) {
+        const file = recipe_paths[path]
+        const slug = path.split('/').at(-1)?.replace('.md', '')
+
+        if (file && typeof file === 'object' && 'metadata' in file && slug) {
+            const metadata = file.metadata as Omit<Recipe, 'slug'>
+            const recipe = { ...metadata, slug } satisfies Recipe
+            if (recipe.published) {
+                recipes.push(recipe)
+            }
+        }
+    }
+
+    recipes = recipes.sort((first, second) => {
+        return new Date(second.date).getTime() - new Date(first.date).getTime()
+    })
+
+    // console.log(`posts: ${posts}`)
+
+    return recipes
 }

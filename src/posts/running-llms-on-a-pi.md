@@ -17,7 +17,7 @@ In this example we'll explore [Ollama](https://ollama.com), named after Meta's o
 
 ## Raspberry Pi 5
 In this example we'll be using a Raspberry Pi 5 8gb running ubuntu from an SD card as our 'test-bench'. Raspberry Pis are single board computers about the size of a credit card, and a common device for hobbyists to play around with. They may not be the strongest computers out there but with the most recent refresh they are becoming a great cheap alternative to a full home lab for those interested in software. Though Pi's have have a name for themselves as prototyping and project boards with many different peripherals on the market and a full array of 40 pins for interaction with other elements.
-![Raspberry Pi 5](../raspberry-pi-5.png)
+![Raspberry Pi 5](../posts/raspberry-pi-5.png)
 
 ## Ollama
 As mentioned earlier we will be using Ollama to fetch and run our different LLMs. Ollama is a simple command line tool that can be installed on Mac, Linux, and Windows and allows for easily downloading and 'running' LLMs locally, making them available both through the command line or running in the background and accessible through a rest API.

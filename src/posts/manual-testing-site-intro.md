@@ -22,11 +22,11 @@ With all this in place, the app can then create images through an api on the fly
 ## The starting implementation
 Through a simple React web app a user can add projects, stories, tests, and test runs as outlined above. The image below shows an example user story with 4 recorded tests, each with a test run from the available different types.
 
-![Example user story page](../manual-testing-site-intro/story_overview.png)
+![Example user story page](../posts/manual-testing-site-intro/story_overview.png)
 
 We then programatically create an image to represent the current state of the story in such a way that it is clearly readable and understandable at a glance, and that can be easily integrated into existing project documentation tools (such as markdown).
 
-![Example generated overview image](../manual-testing-site-intro/story_overview_example_img.png)
+![Example generated overview image](../posts/manual-testing-site-intro/story_overview_example_img.png)
 
 Adding to a markdown file is easy and just requires a simple image http request (example using local development server)
 

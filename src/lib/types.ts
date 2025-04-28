@@ -9,3 +9,14 @@ export type Post = {
 	published: boolean,
 	priority: number
 }
+
+export type Recipe = {
+	title: string,
+	slug: string,
+	description: string,
+	date: string,
+	time: string,
+	rating: number,
+	// categories: Category[]
+	published: boolean
+}
