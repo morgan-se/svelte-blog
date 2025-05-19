@@ -28,7 +28,7 @@ As the name implies, the stepped builder separates the builder configuration int
 
 
 The stepped builder is not without its drawbacks though, the most notable of this being a more complex implementation exposing numerous interfaces. Also in many cases having a strict flow for the client to follow may impact the versatility and reusability of a configured builder. A basic implementation also requires exposing the creation of the builder through a static method instead of object creation as clients may be used to.
-// todo: example
+
 
 ## Seeing an example in code
 Lets take the example of a `Player` class with some basic objects like a name and some stats. Such a class could be used to model the players in a tournament like 'game', in doing so it makes sense we may need numerous players with different stats so a builder pattern fits as a solution to encapsulate this creation logic in a reusable way.
