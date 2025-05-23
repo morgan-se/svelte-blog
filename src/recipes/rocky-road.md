@@ -10,6 +10,7 @@ published: true
 A nostalgic favorite made even better with Tim Tams! This Rocky Road comes together in minutes and delivers the perfect mix of chocolatey, crunchy, chewy goodness in every bite 🍫
 
 ### Ingredients
+![Ingredients](../recipes/rocky-road/ingredients.jpg)
 - 200g plain chocolate chips
 - 200g dark chocolate chips
 - 200g marshmallows
@@ -25,7 +26,7 @@ A nostalgic favorite made even better with Tim Tams! This Rocky Road comes toget
    - ![Fruit lollies](../recipes/rocky-road/fruit-lollies.jpg)
 3. Roughly chop almonds and add to mixing bowl
    - ![Almonds](../recipes/rocky-road/almonds.jpg)
-4. Dice Tim Tams and add to mixing bowl
+4. Dice Tim Tams and add chunks to mixing bowl (discard crumbs)
    - ![Tim tams](../recipes/rocky-road/diced-timtams.jpg)
 5. Add all the chocolate chips and 1 tablespoon of cooking oil into a microwaveable bowl
    - ![Chocolate chips](../recipes/rocky-road/chocolate-chips.jpg)
