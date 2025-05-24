@@ -6,17 +6,18 @@ categories:
   - Java
   - Design Patterns
 published: true
-priority: 1
+priority: 2
 ---
 
 ## What is the builder pattern
-The builder pattern is a creational pattern outlined by the Gang of Four in the XXs. The goal of the pattern is to simplify the creation of objects through a new object that encapsulates the logic for complex object creation.
+The builder pattern is a creational pattern outlined by the Gang of Four in **Design Patterns: Elements of Reusable Object-Oriented Software** in the 90s (despite its age the ideas hold up well and are widely taught in computer science and software programmes around the world). The goal of the builder pattern specifically is to simplify the creation of objects through a new object that encapsulates the logic for complex object creation.
 
+A much more detailed breakdown of the pattern (and all the others) can be found in the aforementioned [Design Patterns](https://wikipedia.org/wiki/Design_Patterns) book, or through the excellent online resource [Refactoring Guru](https://refactoring.guru/design-patterns).
 
 
 
 ## The 'problem'
-The builder pattern allows for much of the object creation process to be simplified and more direct for a client, however in doing so it opens the possibility of invalid cconfigurations. Some may argue that one of points of the builder pattern is to define creation logic with defaults such that an invalid state can not be achieved. However in some cases default values may not be desired, instead wanting to force the client to specify specific options or properties through the builder.
+The builder pattern allows for much of the object creation process to be simplified and more direct for a client, however in doing so it opens the possibility of invalid configurations. Some may argue that one of points of the builder pattern is to define creation logic with defaults such that an invalid state can not be achieved. However in some cases default values may not be desired, instead wanting to force the client to specify specific options or properties through the builder.
 
 Since a builder simply defines a list of methods which set logic and a final `build()` function to create the object, any issues in configuration are found at runtime. As well as this, the building process is somewhat unclear, as the required methods are not clearly exposed or required through code alone.
 
