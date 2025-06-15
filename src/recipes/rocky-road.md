@@ -38,4 +38,4 @@ A nostalgic favorite made even better with Tim Tams! This Rocky Road comes toget
     - ![Tray](../recipes/rocky-road/tray.jpg)
 9.  Refrigerate for 3 hours (or overnight)
 10. Cut into pieces and enjoy 🎉
-    - ![Tray](../recipes/rocky-road/rocky-road.jpg)
+    - ![Rocky road pieces](../recipes/rocky-road/rocky-road.jpg)
