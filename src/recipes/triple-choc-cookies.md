@@ -2,7 +2,7 @@
 title: 'Triple Choc Cookies'
 description: 'An indulgent chocolate cookie recipe'
 date: '2025-06-14'
-time: '15 mins prep 15 mins '
+time: '15 mins prep 15 mins cooking'
 rating: 5
 published: true
 ---
