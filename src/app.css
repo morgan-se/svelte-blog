@@ -6,7 +6,6 @@ a {
 }
 
 html {
-
 	/* --size-content-3: 60ch */
 	/* font */
 	--font-system-ui: 'Atkinson Hyperlegible', sans-serif;
@@ -139,7 +138,6 @@ li {
 	color: var(--text-1);
 }
 
-
 /* \/ post specific */
 
 .prose {
@@ -169,11 +167,11 @@ li {
 	}
 
 	:is(ol) {
-		list-style-type: decimal; 
-   		list-style-position: outside; 
+		list-style-type: decimal;
+		list-style-position: outside;
 		padding-left: var(--size-5);
 	}
-	
+
 	:is(ul) {
 		list-style-type: '👉';
 		padding-left: var(--size-5);
@@ -202,15 +200,14 @@ li {
 	}
 
 	:is(blockquote)::before {
-		content: "“"; /* Decorative quote mark */
+		content: '“'; /* Decorative quote mark */
 		font-size: 6em; /* Large size for emphasis */
 		color: var(--brand); /* Muted color for the quote mark */
 		position: absolute;
 		top: 0; /* Align to the top of the blockquote */
 		left: -0.5em; /* Adjust to position the quote */
 		line-height: 1; /* Prevent extra spacing */
-	  }
-	
+	}
 
 	pre {
 		/* max-inline-size: 100%; */
@@ -250,11 +247,11 @@ li {
 	}
 
 	:is(ol) {
-		list-style-type: decimal; 
-   		list-style-position: outside; 
+		list-style-type: decimal;
+		list-style-position: outside;
 		padding-left: var(--size-5);
 	}
-	
+
 	:is(ul) {
 		list-style-type: '👉';
 		padding-left: var(--size-5);
@@ -283,15 +280,14 @@ li {
 	}
 
 	:is(blockquote)::before {
-		content: "“"; /* Decorative quote mark */
+		content: '“'; /* Decorative quote mark */
 		font-size: 6em; /* Large size for emphasis */
 		color: var(--brand); /* Muted color for the quote mark */
 		position: absolute;
 		top: 0; /* Align to the top of the blockquote */
 		left: -0.5em; /* Adjust to position the quote */
 		line-height: 1; /* Prevent extra spacing */
-	  }
-	
+	}
 
 	pre {
 		/* max-inline-size: 100%; */

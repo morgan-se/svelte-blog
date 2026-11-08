@@ -10,7 +10,9 @@ published: true
 A nostalgic favorite made even better with Tim Tams! This Rocky Road comes together in minutes and delivers the perfect mix of chocolatey, crunchy, chewy goodness in every bite 🍫
 
 ### Ingredients
+
 ![Ingredients](../recipes/rocky-road/ingredients.jpg)
+
 - 200g plain chocolate chips
 - 200g dark chocolate chips
 - 200g marshmallows
@@ -20,6 +22,7 @@ A nostalgic favorite made even better with Tim Tams! This Rocky Road comes toget
 - 100g fruit lollies
 
 ### Instructions
+
 1. Cut marshmallows in half and add to mixing bowl
    - ![Halved marshmallows](../recipes/rocky-road/marshmallows.jpg)
 2. Cut fruit lollies in half and add to mixing bowl
@@ -35,7 +38,7 @@ A nostalgic favorite made even better with Tim Tams! This Rocky Road comes toget
 7. Mix melted chocolate and others ingredients together
    - ![Mixed ingredients](../recipes/rocky-road/mixed-ingredients.jpg)
 8. Pour out rocky road mixture onto a baking tray keeping it roughly 1 inch thick
-    - ![Tray](../recipes/rocky-road/tray.jpg)
-9.  Refrigerate for 3 hours (or overnight)
+   - ![Tray](../recipes/rocky-road/tray.jpg)
+9. Refrigerate for 3 hours (or overnight)
 10. Cut into pieces and enjoy 🎉
     - ![Rocky road pieces](../recipes/rocky-road/rocky-road.jpg)

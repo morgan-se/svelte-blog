@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { formatDate } from '$lib/utils'
-	import * as config from '$lib/config'
+	import { formatDate } from '#lib/utils';
+	import * as config from '#lib/config';
 
-	let { data } = $props()
+	let { data } = $props();
 </script>
 
 <svelte:head>
@@ -13,21 +13,21 @@
 	<h1 class="post_head">Featured Posts:</h1>
 	{#if data.featuredPosts.length > 0}
 		<div class="featured-carousel">
-		{#each data.featuredPosts as post (post.slug)}
-			<div class="featured-post">
-			<a href="/posts/{post.slug}" class="title">{post.title}</a>
-			<p class="date">{formatDate(post.date)}</p>
-			<p class="description">{post.description}</p>
-			</div>
-		{/each}
+			{#each data.featuredPosts as post (post.slug)}
+				<div class="featured-post">
+					<a href="/posts/{post.slug}" class="title">{post.title}</a>
+					<p class="date">{formatDate(post.date)}</p>
+					<p class="description">{post.description}</p>
+				</div>
+			{/each}
 		</div>
 	{/if}
-	
+
 	<h1 class="post_head">Recent Posts:</h1>
 	<ul class="posts">
 		{#each data.posts as post}
 			<li class="post">
-				<a href='/posts/{post.slug}' class="title">{post.title}</a>
+				<a href="/posts/{post.slug}" class="title">{post.title}</a>
 				<p class="date">{formatDate(post.date)}</p>
 				<p class="description">{post.description}</p>
 			</li>
@@ -41,7 +41,7 @@
 	}
 
 	.featured-carousel {
-  		display: flex;
+		display: flex;
 		overflow-x: auto; /* Allows horizontal scrolling for the carousel */
 		gap: var(--size-7); /* Space between featured posts */
 		padding: var(--size-7) 0; /* Top and bottom padding for separation */

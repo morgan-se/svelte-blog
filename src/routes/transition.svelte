@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte'
-	import { fade } from 'svelte/transition'
+	import type { Snippet } from 'svelte';
+	import { fade } from 'svelte/transition';
 
 	type Props = {
-		children: Snippet
-		url: string
-	}
+		children: Snippet;
+		url: string;
+	};
 
-	let { children, url }: Props = $props()
+	let { children, url }: Props = $props();
 </script>
 
 {#key url}

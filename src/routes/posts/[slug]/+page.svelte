@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { formatDate } from '$lib/utils';
+	import { formatDate } from '#lib/utils';
 	import { onMount } from 'svelte';
 
 	let estimatedReadTime: number = $state(0);
@@ -28,9 +28,11 @@
 	<hgroup>
 		<h1>{data.meta.title}</h1>
 		{#if data.meta.published}
-		<p>Published on {formatDate(data.meta.date)}</p>
+			<p>Published on {formatDate(data.meta.date)}</p>
 		{:else}
-			<p style="font-weight: bold; color: var(--text-light-warn);">Warning: blog has not been officially published, it may not be complete</p>
+			<p style="font-weight: bold; color: var(--text-light-warn);">
+				Warning: blog has not been officially published, it may not be complete
+			</p>
 		{/if}
 		<p>Estimated read time: {estimatedReadTime} min</p>
 	</hgroup>

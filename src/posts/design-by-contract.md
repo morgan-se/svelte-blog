@@ -11,16 +11,19 @@ priority: 3
 ---
 
 ## What is Design by Contract
+
 Design by Contract is an approach to writing software that takes the idea of 'contracts' from law and applies that to the code we write. The generalized and simple case of this is simply a method that defines a contract about _how_ it works, broken up into two important sections
+
 - Preconditions
   - These are the requirements that must be met before calling the method (the obligation of the caller)
 - Postconditions
   - These are specifications about the output or result that the method will ensure are met after its execution
 
-Lets think about a quick example. 
+Lets think about a quick example.
 Say we have a plane and can take-off with up to 10,000kg of cargo and will have an airspeed greater than or equal to 200 knots. We can model this as saying the precondition for take-off is having `cargo <= 10,000kg`. For a postcondition we can consider that same plane after take-off must have an `airspeed >= 200knots`.
 
 The code might look something like the following:
+
 ```java
 public int takeoff(int cargo) {
     int airspeed = 200 + (100 - (cargo/100));
@@ -28,11 +31,11 @@ public int takeoff(int cargo) {
 }
 ```
 
-
 ## Defining a contract
+
 Its important to consider how we actually define the contracts our code meets. At the most fundamental level strongly-typed languages provide clear pre/post-conditions about the arguments passed to any method. For example specifying a function takes an integer and returns a string, which our language tools (generally) enforce.
 
-However Design by Contract requires more than just validating types, instead we often want to validate values. For example as checking that numbers are over or less than a certain value. Sadly for us most programming languages don't support expressing these requirements within our method signatures and receiving valid static analysis on the code to ensure validity. We can get around some of these, especially simpler validation rules by modelling the domain. For example using Enums to represent valid input states gives us certainty that our function won't be called with other invalid states. Though generally, much like law practitioners, we fall back to written language (or documentation) as a means to explain requirements. 
+However Design by Contract requires more than just validating types, instead we often want to validate values. For example as checking that numbers are over or less than a certain value. Sadly for us most programming languages don't support expressing these requirements within our method signatures and receiving valid static analysis on the code to ensure validity. We can get around some of these, especially simpler validation rules by modelling the domain. For example using Enums to represent valid input states gives us certainty that our function won't be called with other invalid states. Though generally, much like law practitioners, we fall back to written language (or documentation) as a means to explain requirements.
 
 There is no 'official' documentation standard for design by contract, however its generally a simple affair. Importantly we want to make it explicit the exact pre and post condition requirements with as little ambiguity as possible. The vast majority of languages support method level documentation like Javadoc where we can store this information.
 
@@ -73,7 +76,6 @@ Exception in thread "main" java.lang.AssertionError
 	at Plane.takeoff(Plane.java:4)
 	at Plane.main(Plane.java:11)
 ```
-
 
 <!-- ## A complete example -->
 <!-- Come up with a more fleshed out example that has good javadoc explaining the contract, assertions, ... encorporate some more edge case scenarios such as overflow -->

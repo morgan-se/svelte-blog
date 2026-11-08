@@ -1,10 +1,9 @@
 <script lang="ts" module>
-	import { img } from '$lib/components/custom'
-	export { img }
+	export { img } from '#lib/components/custom/index';
 </script>
 
 <script lang="ts">
-	let props = $props()
+	let props = $props();
 </script>
 
 {@render props.children?.()}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { formatDate } from '$lib/utils';
+	import { formatDate } from '#lib/utils';
 
 	let { data } = $props();
 </script>
@@ -14,13 +14,15 @@
 	<hgroup class="recipe-head">
 		<h1>{data.meta.title}</h1>
 		{#if data.meta.published}
-		<p class="sub">Published on {formatDate(data.meta.date)}</p>
+			<p class="sub">Published on {formatDate(data.meta.date)}</p>
 		{:else}
-			<p style="font-weight: bold; color: var(--text-light-warn);">Warning: blog has not been officially published, it may not be complete</p>
+			<p style="font-weight: bold; color: var(--text-light-warn);">
+				Warning: blog has not been officially published, it may not be complete
+			</p>
 		{/if}
-        <p class="sub">
-            Expected prep and cooking time: ~{data.meta.time}
-        </p>
+		<p class="sub">
+			Expected prep and cooking time: ~{data.meta.time}
+		</p>
 	</hgroup>
 
 	<!-- <div class="tags">
@@ -46,12 +48,12 @@
 			text-transform: capitalize;
 		}
 
-        .recipe-head{
-            .sub {
-                margin-top: var(--size-2);
-                color: var(--text-2);
-		    }
-        }
+		.recipe-head {
+			.sub {
+				margin-top: var(--size-2);
+				color: var(--text-2);
+			}
+		}
 
 		/* h1 + p {
 			margin-top: var(--size-2);

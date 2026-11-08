@@ -3,16 +3,17 @@ title: On Understanding Quality Requirements
 description: A deep dive into Quality Requirements (NFRs)
 date: '2026-11-08'
 categories:
-    - Quality Requirements
-    - Requirements Engineering
-    - Usability
-    - Maintainability
+  - Quality Requirements
+  - Requirements Engineering
+  - Usability
+  - Maintainability
 published: false
 priority: 1
 ---
 
 The most important part of planning a software product is understanding the requirements it must fulfill, otherwise you can spend all that time developing something that doesn't meet the needs of the users.
 These requirements are commonly split into two distinct groups:
+
 - **functional requirements** which specify what the product should do and,
 - **quality requirements** _(also referred to as non-functional requirements)_ which specify '_how_' the product should do it.
 
@@ -20,20 +21,25 @@ During planning both types of requirements should be used to define and scope th
 Often used to define a contract that specifies what a delivered product must achieve to be considered 'complete'.
 
 ## Common Quality Requirements
+
 Below I break down a list of common quality requirements informed by my experience with desktop and web application development, other domains may have different prioritisation and understanding of them.
 
 To better define quality requirements we can specify:
+
 - The high-level question it asks of the product
 - Why we should care about it
 - What it looks like in practice
 - How it can be achieved (and measured)
 
 ### Usability
+
 Usability is the largest quality requirement when dealing with software targeted to the public. At a high level, usability considers how easy a product is to use, and has many sub-requirements.
 A product that lacks usability is frustrating and difficult to use, leading to lower user satisfaction and retention - a death knell in domains with competent competitors.
 
 #### Navigability
+
 **<u>The Question(s):</u>**
+
 - How easy is the product to navigate?
 - Can the user find actions or information they want?
 
@@ -44,10 +50,11 @@ Having a product that is easy to navigate reduces the cognitive load on the user
 **<u>What it looks like:</u>**
 
 In practice this is largely achieved in two different ways
+
 - making navigation intuitive and consistent in both structure and terminology
   - any functionality should be in the first place the user would expect to find it
   - navigation should be done through a consistent interface, i.e. a navbar
-- reducing the number of steps required to complete a task from some starting point, or closely related actions 
+- reducing the number of steps required to complete a task from some starting point, or closely related actions
   - support direct navigation for important functionality
   - keep related actions close together
 
@@ -60,7 +67,9 @@ We may specify a requirement that 80% of users can complete a task in 3 clicks o
 On a more objective front we can measure the minimum number of clicks any functionality takes a starting point using the most efficient path, for example specifying the requirement that all actions must be achievable in 3 clicks or less from the home page.
 
 #### Learnability
+
 **<u>The Question(s):</u>**
+
 - How easy is it for the user to learn and understand how to use the product efficiently?
 
 **<u>Why we should care about it:</u>**
@@ -75,17 +84,21 @@ We can support users explicitly by showing them how to use the application, such
 **<u>How can we achieve and measure it:</u>**
 
 There are two common approaches to measure learnability through end-users.
+
 - We can give users the help documentation and then ask them to complete a task and record how easy they found it, however a simple enough application with good navigability and familiarity should pass such a test without needing help documentation.
 - We can give users specific tasks to complete and repeat these several times, recording how much faster the latter repetitions take and the number of errors made
   - An application with good learnability should see a decrease in the number of errors and decrease in the time taken for each subsequent attempt. Specifically we may have the requirement that on average users complete the third repetition 20% faster and with fewer errors made than their first attempt.
 
-We can also consider some basic requirements: 
+We can also consider some basic requirements:
+
 - each functionality (down to the use case or acceptance criteria) is explicitly mentioned in the help documentation,
 - all non-obvious fields and buttons have tooltips
-  - defining what is obvious may be non-trivial, however adding tooltips to everything is an anti-pattern (i.e., it is obvious when I am on the register page that clicking the "Register" button at the bottom will submit the form.) 
+  - defining what is obvious may be non-trivial, however adding tooltips to everything is an anti-pattern (i.e., it is obvious when I am on the register page that clicking the "Register" button at the bottom will submit the form.)
 
 #### Familiarity & Consistency
+
 **<u>The Question(s):</u>**
+
 - How consistent is the product with others (especially those of the same domain) and within itself?
 - How can the user leverage knowledge they have of other systems to understand how to use this one?
 
@@ -100,7 +113,6 @@ Being familiar and consistent requires sticking to accepted UX standards, flows,
 For example web applications should make use of navigation bars, form buttons should be placed at the bottom, etc...
 When considering the domain it is more specific, and holistic depending on what competitors actually exist. It may be as simple as using similar icons for actions, or adding support for known common keyboard shortcuts a user may expect to 'just work'.
 
-
 **<u>How can we achieve and measure it:</u>**
 
 We can measure familiarity using first-click testing where we show potential end users a screenshot of a specific screen and ask them where they would click to perform a specific action. We can then require that 80% of users pick the correct button within 3 seconds.
@@ -109,7 +121,9 @@ Outside of this measuring familiarity and consistency is difficult, if its done 
 In certain cases we can define explicit functional requirements that specify shortcuts that must work, i.e. All modals can be closed by pressing 'Esc'
 
 #### Readability
+
 **<u>The Question(s):</u>**
+
 - How easy is it for the user to understand (read) the content and state of the application?
 
 **<u>Why we should care about it:</u>**
@@ -120,6 +134,7 @@ Much like the other aspects of usability, readability helps to reduce cognitive 
 
 Readability considers both text, visual elements, layout, design, colour, and more as tools to help the user understand the content and state of the application.
 Some important considerations include:
+
 - using understandable, and consistent, icons to represent actions or information. I.e.
   - an 'X' for closing
   - a pencil to edit
@@ -139,7 +154,9 @@ This can be measured be collecting user sentiment as part of user experience tes
 We can also ask these users to 'think-aloud' as they are going through specific tasks to understand better how they are perceiving the app.
 
 #### Accessibility
+
 **<u>The Question(s):</u>**
+
 - How easy is it for the user to interact with the application?
 - How can we support a wide range of individuals to interact with the application?
 
@@ -159,7 +176,9 @@ Aspects like colour and contrast can be measured using tools like [Coloring for 
 For web development tools and linters exist that warn about accessibility issues like missing alt text, missing labels, etc... which can be used to help ensure that screen-reader support is provided.
 
 #### Error Prevention & Recoverability
+
 **<u>The Question(s):</u>**
+
 - Is the user prevented from making erroneous or unwanted actions?
 - Is the user able to recover from errors?
 
@@ -171,16 +190,18 @@ You can make your application as beautiful, accessible, and consistent as you wa
 **<u>What it looks like:</u>**
 
 Any irrecoverable actions on important data must require confirmation (or support undoing), this includes:
+
 - Anything that takes a long time for the user to recreate
 - Anything with history that a user simply can't recreate
 - Anything that a user must spend significant time recreating
 
 If a user is completing an action which has specific error condition (i.e. validation that must be met) these should be made clear to the user before submitting. This often includes:
+
 - character type requirements for password fields
 - expected format for date fields
 - min and max length support - you may even consider limiting at the max so the user is unable to enter the error state where they have a field with too many characters
-When there are issues this must then be made clear to the user through highlighting, and where relevant explicitly stating what is wrong, so a user can quickly fix them.
-On components like forms, users will generally expect that their input is not cleared - the exception to this being passwords. 
+  When there are issues this must then be made clear to the user through highlighting, and where relevant explicitly stating what is wrong, so a user can quickly fix them.
+  On components like forms, users will generally expect that their input is not cleared - the exception to this being passwords.
 
 This may also include disabling fields dynamically that would be invalid due to other state.
 
@@ -195,6 +216,7 @@ Again we can gain insights from user testing to understand user sentiment about 
 This is especially important in form-heavy applications where a user may be required to fill out many different forms with different validation requirements that are not easy to memorize.
 
 ### Maintainability
+
 Maintainability is an important consideration for long-lived software, though in practice its good to consider it for any software we write.
 I'm sure many developers like myself will be able remember a time they hacked together something quick thinking it wouldn't need to be maintained only to end-up drowning in a sea of bad decisions and technical debt.
 
@@ -205,11 +227,13 @@ Yet developers can often neglect the basics of future-proofing their code (i.e. 
 
 As much as I complain about the lack of standards, there is infact ISO/IEC 25010 which splits maintainability into 5 sub characteristics (though it lacks widespread adoption and is much harder to quantify and enforce than similar standards in other domains).
 Lets take a deeper look at these characteristics, including:
+
 - The ISO/IEC 25010 description
 - Why we should care about it
 - How it can be achieved (and measured)
 
 #### Modularity
+
 <u>ISO/IEC 25010 description</u>:
 
 Degree to which a system or computer program is composed of discrete components such that a change to one component has minimal impact on other components.
@@ -227,6 +251,7 @@ If for example you are writing an API with dotnet then there are clear best prac
 Having the framework (and community) support these best practice allows greatly reduces the cognitive overhead for developers who have previous experience.
 
 There are some specific static analysis measurements we can use to get an objective measure:
+
 - Efferent Coupling (C<sub>e</sub>)
   - The number of other modules that depend on the module in question.
 - Afferent Coupling (C<sub>a</sub>)
@@ -263,6 +288,7 @@ A module with I=0 depends on nobody (C<sub>e</sub> = 0) but many other modules m
 A module with I=1 depends on many other modules (C<sub>e</sub> > 0) but no other modules depends on it (C<sub>a</sub> = 0), this means it may be a utility or top-level module (i.e. UI entry points), changing it will have little to no impact on other modules.
 
 #### Reusability
+
 <u>ISO/IEC 25010 description</u>:
 
 Degree to which a product can be used as an asset in more than one system, or in building other assets.
@@ -276,6 +302,7 @@ Degree to which a product can be used as an asset in more than one system, or in
 By...
 
 #### Analysability
+
 <u>ISO/IEC 25010 description</u>:
 
 Degree of effectiveness and efficiency with which it is possible to assess the impact on a product or system of an intended change to one or more of its parts, to diagnose a product for deficiencies or causes of failures, or to identify parts to be modified.
@@ -289,19 +316,21 @@ Degree of effectiveness and efficiency with which it is possible to assess the i
 By...
 
 #### Modifiability
+
 <u>ISO/IEC 25010 description</u>:
 
 Degree to which a product or system can be effectively and efficiently modified without introducing defects or degrading existing product quality.
 
 **<u>Why we should care about it:</u>**
 
-Modifiability - much like modularity - 
+Modifiability - much like modularity -
 
 **<u>How can we achieve and measure it:</u>**
 
 By...
 
 #### Testability
+
 <u>ISO/IEC 25010 description</u>:
 
 Degree of effectiveness and efficiency with which test criteria can be established for a system, product or component and tests can be performed to determine whether those criteria have been met.
@@ -318,6 +347,7 @@ Whilst a testable codebase is important, we also don't want to ship test code (o
 By...
 
 ### Technical & Operational Requirements
+
 intro
 
 #### Performance
@@ -333,6 +363,7 @@ intro
 #### Security
 
 ### Social, Legal & Ethical Requirements
+
 intro
 
 #### Responsibility
@@ -342,5 +373,6 @@ intro
 #### Inclusivity & Biculturalism
 
 ## From here...
+
 With an understanding of common quality requirements, the next step in any project is working out which ones are relevant to the project (and its stakeholders).
-This is often done as part of a Key Driver analysis which I go into more detail [coming soon...]().
+This is often done as part of a Key Driver analysis which I go into more detail [coming soon...](<>).

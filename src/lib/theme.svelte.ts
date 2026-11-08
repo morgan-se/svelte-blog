@@ -1,14 +1,14 @@
-import { browser } from '$app/environment'
+import { browser } from '$app/env';
 
 class Theme {
-	current = $state(browser && localStorage.getItem('color-scheme'))
+	current = $state(browser && localStorage.getItem('color-scheme'));
 
 	toggle = () => {
-		const theme = this.current === 'dark' ? 'light' : 'dark'
-		document.documentElement.setAttribute('color-scheme', theme)
-		localStorage.setItem('color-scheme', theme)
-		this.current = theme
-	}
+		const theme = this.current === 'dark' ? 'light' : 'dark';
+		document.documentElement.setAttribute('color-scheme', theme);
+		localStorage.setItem('color-scheme', theme);
+		this.current = theme;
+	};
 }
 
-export const theme = new Theme()
+export const theme = new Theme();

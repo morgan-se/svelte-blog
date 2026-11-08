@@ -25,9 +25,13 @@ export default ts.config(
 			parserOptions: {
 				parser: ts.parser
 			}
+		},
+		rules: {
+			'svelte/no-navigation-without-resolve': 'off',
+			'svelte/require-each-key': 'off'
 		}
 	},
 	{
-		ignores: ['build/', '.svelte-kit/', 'dist/']
+		ignores: ['build/', '.svelte-kit/', 'dist/', '.vercel/']
 	}
 );
