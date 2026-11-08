@@ -6,7 +6,7 @@ categories:
   - LLMs
   - Raspberry Pi
   - Generative AI
-published: true
+published: false
 priority: 2
 ---
 
